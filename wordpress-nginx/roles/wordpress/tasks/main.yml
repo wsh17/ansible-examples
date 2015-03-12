@@ -1,4 +1,10 @@
 ---
+- local_action: shell head -c 32 /dev/urandom | tr -dc 'a-zA-Z0-9'
+  register: wp_db_name
+- local_action: shell head -c 32 /dev/urandom | tr -dc 'a-zA-Z0-9'
+  register: wp_db_user
+- local_action: shell head -c 128 /dev/urandom | tr -dc 'a-zA-Z0-9'
+  register: wp_db_password
 - name: Download Wordpress
   get_url: url=http://wordpress.org/wordpress-{{ wp_version }}.tar.gz dest=/srv/wordpress-{{ wp_version }}.tar.gz
            sha256sum="{{ wp_sha256sum }}"
@@ -18,10 +24,10 @@
   sudo: no
 
 - name: Create Wordpress database
-  mysql_db: name={{ wp_db_name }} state=present
+  mysql_db: name={{ wp_db_name.stdout_lines }} state=present
 
 - name: Create Wordpress database user
-  mysql_user: name={{ wp_db_user }} password={{ wp_db_password }} priv={{ wp_db_name }}.*:ALL host='localhost' state=present
+  mysql_user: name={{ wp_db_user.stdout_lines }} password={{ wp_db_password.stdout_lines }} priv={{ wp_db_name.stdout_lines }}.*:ALL host='localhost' state=present
 
 - name: Copy Wordpress config file
   template: src=wp-config.php dest=/srv/wordpress/
