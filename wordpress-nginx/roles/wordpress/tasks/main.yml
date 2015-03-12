@@ -24,10 +24,10 @@
   sudo: no
 
 - name: Create Wordpress database
-  mysql_db: name={{ wp_db_name.stdout_lines }} state=present
+  mysql_db: name={{ wp_db_name.stdout }} state=present
 
 - name: Create Wordpress database user
-  mysql_user: name={{ wp_db_user.stdout_lines }} password={{ wp_db_password.stdout_lines }} priv={{ wp_db_name.stdout_lines }}.*:ALL host='localhost' state=present
+  mysql_user: name={{ wp_db_user.stdout }} password={{ wp_db_password.stdout }} priv={{ wp_db_name.stdout }}.*:ALL host='localhost' state=present
 
 - name: Copy Wordpress config file
   template: src=wp-config.php dest=/srv/wordpress/
