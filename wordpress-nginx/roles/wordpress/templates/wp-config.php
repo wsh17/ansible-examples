@@ -53,7 +53,7 @@ define('DB_COLLATE', '');
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = '{{ wp_db_name.stdout_lines }}_';
+$table_prefix  = '{{ wp_db_name.stdout }}_';
 
 /**
  * WordPress Localized Language, defaults to English.
