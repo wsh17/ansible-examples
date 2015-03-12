@@ -4,11 +4,11 @@ wp_version: 4.1
 wp_sha256sum: 3743d82698571903382dc223940e712f7bb5cfd20cedba7b7c32c97d470defab
 
 # These are the Wordpress database settings
-rand1: "{{ 99999999 |random }}"
-rand2: "{{ 99999999 |random }}"    
+rand1: "{{ 999999999999 |random }}"
+rand2: "{{ 999999999999 |random }}"    
 rand3: "{{ 99999999999999999999 |random }}"
-wp_db_name: "{{ rand1|b64encode }}"
-wp_db_user: "{{ rand2|b64encode }}"
+wp_db_name: "{{ rand1 }}"
+wp_db_user: "{{ rand2 }}"
 wp_db_password: "{{ rand3|b64encode }}"
 
 
