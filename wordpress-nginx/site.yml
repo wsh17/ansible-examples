@@ -1,6 +1,6 @@
 ---
 - name: Install Wordpress, MySQL, Nginx, and PHP-FPM
-  hosts: 127.0.0.1
+  hosts: wordpress-server
   connection: local
   user: root
   # remote_user: user
