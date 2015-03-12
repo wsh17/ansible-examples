@@ -1,4 +1,7 @@
 ---
+- name: Permissive selinux
+  selinux: policy=targeted state=permissive
+  
 - name: Install nginx
   yum: name=nginx state=present
 
