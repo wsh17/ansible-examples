@@ -16,13 +16,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', '{{ wp_db_name.stdout_lines }}');
+define('DB_NAME', '{{ wp_db_name.stdout }}');
 
 /** MySQL database username */
-define('DB_USER', '{{ wp_db_user.stdout_lines }}');
+define('DB_USER', '{{ wp_db_user.stdout }}');
 
 /** MySQL database password */
-define('DB_PASSWORD', '{{ wp_db_password.stdout_lines }}');
+define('DB_PASSWORD', '{{ wp_db_password.stdout }}');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
