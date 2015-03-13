@@ -1,14 +1,14 @@
 ---
 # Which version of Wordpress to deploy
-wp_version: 4.1
-wp_sha256sum: 3743d82698571903382dc223940e712f7bb5cfd20cedba7b7c32c97d470defab
+wp_version: 4.1.1
+wp_sha256sum: b3b332e570cc032c52d22f938c314dc4a35f0e0096bcfda22e479103bff8bbda
 
 # You shouldn't need to change this.
 mysql_port: 3306
 
 # This is used for the nginx server configuration, but access to the
 # Wordpress site is not restricted by a named host.
-server_hostname: www.example.com
+server_hostname: {{ ansible_fqdn }}
 
 # Disable All Updates
 # By default automatic updates are enabled, set this value to true to disable all automatic updates
