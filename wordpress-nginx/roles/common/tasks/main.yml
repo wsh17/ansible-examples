@@ -7,17 +7,8 @@
   when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
   notify: restart iptables
 
-- name: Set up firewalld
-  firewalld: service={{ item }} permanent=true state=enabled
-  with_items:
-    - http
-    - https
-    - ssh
+- name: disable firewalld
+  service: name=firewalld state=stopped enabled=no
   when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
-  register: firewalld
-  
-- name: restart firewalld
-  raw: firewall-cmd --complete-reload 2>&1 &
-  when: firewalld.changed
 
 
