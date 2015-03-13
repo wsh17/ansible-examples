@@ -8,7 +8,7 @@ mysql_port: 3306
 
 # This is used for the nginx server configuration, but access to the
 # Wordpress site is not restricted by a named host.
-server_hostname: {{ ansible_fqdn }}
+server_hostname: "{{ ansible_fqdn }}"
 
 # Disable All Updates
 # By default automatic updates are enabled, set this value to true to disable all automatic updates
