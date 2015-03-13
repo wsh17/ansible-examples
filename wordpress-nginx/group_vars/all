@@ -1,7 +1,7 @@
 ---
 # Which version of Wordpress to deploy
 wp_version: 4.1.1
-wp_sha256sum: b3b332e570cc032c52d22f938c314dc4a35f0e0096bcfda22e479103bff8bbda
+wp_sha256sum: 618ac08c2be3959b37f4ee0006558da65b7a4bca19bfb4b86ea60e5d53043ee9
 
 # You shouldn't need to change this.
 mysql_port: 3306
