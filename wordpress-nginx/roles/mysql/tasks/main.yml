@@ -3,13 +3,13 @@
   yum: name={{ item }} state=present
   with_items:
    - mariadb-server
-  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '7'
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
 
 - name: Install Mysql package CentOS 6
   yum: name={{ item }} state=present
   with_items:
    - mysql-server
-  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '6'
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
    
 - name: Install Mysql packages
   yum: name={{ item }} state=present
@@ -27,8 +27,8 @@
 
 - name: retart Mysql Service
   service: name=mysqld state=restarted enabled=yes
-  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '6'
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
   
 - name: retart Mariadb Service
   service: name=mariadb state=started enabled=yes
-  when: ansible_distribution == 'CentOS' and ansible_distribution_version == '7'
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
