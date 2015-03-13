@@ -2,12 +2,15 @@
 - name: Install libselinux-python
   yum: name=libselinux-python state=present
 
-#- name: Copy the EPEL repository definition
-#  copy: src=epel.repo dest=/etc/yum.repos.d/epel.repo
-
-#- name: Create the GPG key for EPEL
-#  copy: src=RPM-GPG-KEY-EPEL-6 dest=/etc/pki/rpm-gpg
-
 - name: Set up iptables rules
   copy: src=iptables-save dest=/etc/sysconfig/iptables
-  #notify: restart iptables
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+  notify: restart iptables
+
+- name: Set up firewalld
+  firewalld: service={{ item }} permanent=true state=enabled
+  with_items:
+    - http
+    - https
+    - ssh
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '7'
