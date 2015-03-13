@@ -17,7 +17,7 @@
   register: firewalld
   
 - name: restart firewalld
-  shell: firewall-cmd --complete-reload 2>&1 &
+  raw: firewall-cmd --complete-reload 2>&1 &
   when: firewalld.changed
 
 
